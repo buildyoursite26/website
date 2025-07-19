@@ -1,17 +1,18 @@
-/* General Reset */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   padding: 20px;
+  color: white; 
+  background: transparent;
 }
 
-/* ✅ Marquee Styling */
+
 .marquee {
   overflow: hidden;
   white-space: nowrap;
   box-sizing: border-box;
-  background-color: #000; /* black background */
-  color: #fff;            /* white text */
+  background-color: #000; 
+  color: #fff;            
   font-size: 24px;
   padding: 10px 0;
 }
@@ -24,7 +25,7 @@ body {
 
 .marquee-content span {
   display: inline-block;
-  margin-right: 50px; /* space between texts */
+  margin-right: 50px; 
 }
 
 @keyframes scroll-left {
@@ -36,7 +37,7 @@ body {
   }
 }
 
-/* 💡 Additional styling (optional for your site) */
+
 .highlight {
   color: #ff5722;
   font-weight: bold;
@@ -118,4 +119,17 @@ button {
   font-size: 16px;
   padding: 8px 0;
   border-bottom: 1px dashed #ccc;
+}
+
+#galaxy-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+}
+.solutions{
+    color: black;
 }

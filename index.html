@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Build Your own website</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
+    <canvas id="galaxy-bg"></canvas>
+
     <div class="marquee">
   <div class="marquee-content">
     <span>BUILD YOUR OWN SITE</span>
@@ -38,7 +41,7 @@
     <div class="services">
     <h2>All-in-One Web Solutions</h2>
     <p>I help businesses grow by providing everything from stunning website design to full-stack development and ongoing support.</p>
-    <ul>
+    <ul class="solutions">
         <li>✅ Website Design (UI/UX)</li>
         <li>✅ Responsive Web Development</li>
         <li>✅ Custom Landing Pages</li>
@@ -49,6 +52,57 @@
         <li>✅ Website Redesign & Performance Boost</li>
     </ul>
 </div>
+ <script>
+    window.onload = function() {
+        const canvas = document.getElementById('galaxy-bg');
+        const ctx = canvas.getContext('2d');
 
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let stars = [];
+        let numStars = 150;
+
+        function initStars() {
+          stars = [];
+          for (let i = 0; i < numStars; i++) {
+            stars.push({
+              x: Math.random() * canvas.width,
+              y: Math.random() * canvas.height,
+              radius: Math.random() * 1.5,
+              velocity: Math.random() * 0.2 + 0.1
+            });
+          }
+        }
+
+        function animateStars() {
+          ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          ctx.fillStyle = "white";
+          stars.forEach((star) => {
+            star.y += star.velocity;
+            if (star.y > canvas.height) {
+              star.y = 0;
+              star.x = Math.random() * canvas.width;
+            }
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+            ctx.fill();
+          });
+
+          requestAnimationFrame(animateStars);
+        }
+
+        initStars();
+        animateStars();
+
+        window.addEventListener('resize', () => {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+          initStars();
+        });
+    };
+    </script>
 </body>
 </html>
